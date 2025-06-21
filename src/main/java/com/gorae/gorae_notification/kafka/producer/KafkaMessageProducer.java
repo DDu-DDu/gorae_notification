@@ -1,4 +1,4 @@
-package com.gorae.notification.kafka.producer;
+package com.gorae.gorae_notification.kafka.producer;
 
 public class KafkaMessageProducer {
 }
