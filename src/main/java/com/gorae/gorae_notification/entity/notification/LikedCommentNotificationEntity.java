@@ -19,7 +19,7 @@ public class LikedCommentNotificationEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_userid")
-    private String postUserId;
+    private UserEntity postUserId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "comment_userid")

@@ -10,6 +10,8 @@ import lombok.*;
 public class AdoptCommentEvent {
     public static final String TOPIC = "adopt-comment";
 
+    private String action;
+
     private String postUserId;
     private String adopt;
 }

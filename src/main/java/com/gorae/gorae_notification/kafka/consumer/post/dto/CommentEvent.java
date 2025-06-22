@@ -12,6 +12,8 @@ import java.time.LocalDateTime;
 public class CommentEvent {
     public static final String Topic = "comment";
 
+    private String action;
+
     private String postUserId;
     private String commentUserId;
     private String commentContent;

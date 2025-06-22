@@ -10,6 +10,8 @@ import lombok.*;
 public class LikeCommentEvent {
     public static final String TOPIC = "like-comment";
 
+    private String action;
+
     private String postUserId;
     private String commentUserId;
     private String commentLikeUserId;
