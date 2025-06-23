@@ -18,7 +18,7 @@ public class KafkaAdoptConsumer {
 
     @KafkaListener(
             topics = CommentEvent.Topic,
-            groupId = "adopt-group",
+            groupId = "adopt",
             containerFactory = "adoptKafkaListenerFactory"
     )
     public void handleAdoptEvent(AdoptEvent event, Acknowledgment ack) {

@@ -26,7 +26,6 @@ public class UserService {
                         .profileImgUrl(event.getProfileImgUrl())
                         .build()
                 );
-
         userEntityRepository.save(user);
     }
 }

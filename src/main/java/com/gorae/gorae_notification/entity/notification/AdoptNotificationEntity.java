@@ -27,6 +27,10 @@ public class AdoptNotificationEntity {
     @JoinColumn(name = "comment_userid")
     private UserEntity commentUserId;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "adopt_userid")
+    private UserEntity commentLikeUserId;
+
     private boolean adopt = false;
 
     private String message;

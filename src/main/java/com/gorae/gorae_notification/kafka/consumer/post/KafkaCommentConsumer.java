@@ -17,7 +17,7 @@ public class KafkaCommentConsumer {
 
     @KafkaListener(
             topics = CommentEvent.Topic,
-            groupId = "comment-group",
+            groupId = "comment",
             containerFactory = "commentKafkaListenerFactory"
     )
     public void handleCommentEvent(CommentEvent event, Acknowledgment ack) {

@@ -18,7 +18,7 @@ public class KafkaLikedConsumer {
 
     @KafkaListener(
             topics = CommentEvent.Topic,
-            groupId = "liked-group",
+            groupId = "liked",
             containerFactory = "likedKafkaListenerFactory"
     )
     public void handleLikedEvent(LikedEvent event, Acknowledgment ack) {
