@@ -7,12 +7,13 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "like")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class LikedCommentNotificationEntity {
+public class LikedNotificationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
