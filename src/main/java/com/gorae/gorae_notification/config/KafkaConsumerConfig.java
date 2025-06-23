@@ -45,6 +45,11 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, UserEvent> userKafkaListenerFactory() {
+        return  buildFactory(UserEvent.class, "user");
+    }
+
+    @Bean
     public ConcurrentKafkaListenerContainerFactory<String, CommentEvent> commentKafkaListenerFactory() {
         return buildFactory(CommentEvent.class, "comment");
     }
@@ -57,10 +62,5 @@ public class KafkaConsumerConfig {
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, AdoptEvent> adoptKafkaListenerFactory() {
         return buildFactory(AdoptEvent.class, "adopt");
-    }
-
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, UserEvent> userKafkaListenerFactory() {
-        return  buildFactory(UserEvent.class, "user");
     }
 }

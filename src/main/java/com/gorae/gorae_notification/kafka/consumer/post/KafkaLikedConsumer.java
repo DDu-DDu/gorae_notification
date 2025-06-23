@@ -24,7 +24,7 @@ public class KafkaLikedConsumer {
     public void handleLikedEvent(LikedEvent event, Acknowledgment ack) {
         try {
             log.info("userId={}님이 좋아요를 남겼습니다.", event.getCommentLikeUserId());
-            likedService.processLikedCommentEvent(event);
+            likedService.processLikedEvent(event);
             ack.acknowledge();
         } catch (Exception e) {
             log.error("답글 작성중 오류가 발생헀습니다. {}", e.getMessage(), e);

@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class LikedEvent {
-    public static final String Topic = "like-comment";
+    public static final String Topic = "liked";
 
     private String action;
 

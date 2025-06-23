@@ -24,7 +24,7 @@ public class BadgeNotificationEntity {
 
     private String message;
 
-    private boolean isRead = false;
+    private Boolean isRead = false;
 
     private LocalDateTime readAt;
 }

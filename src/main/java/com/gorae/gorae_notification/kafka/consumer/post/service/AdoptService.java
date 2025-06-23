@@ -17,7 +17,7 @@ public class AdoptService {
     private final AdoptNotificationRepository adoptNotificationRepository;
     private final SimpMessagingTemplate messagingTemplate;
 
-    public void processAdoptCommentEvent(AdoptEvent event) {
+    public void processAdoptEvent(AdoptEvent event) {
         UserEntity postUserId = userEntityRepository.findByUserId(event.getPostUserId())
                 .orElseThrow(() -> new IllegalArgumentException("질문 작성자 유저 없음"));
 

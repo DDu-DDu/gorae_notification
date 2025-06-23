@@ -20,7 +20,7 @@ public class NotificationDto {
         return NotificationDto.builder()
                 .type("like")
                 .message(entity.getCommentLikeUserId().getUserName() + "님이 댓글에 좋아요를 눌렀습니다.")
-                .isRead(entity.isRead())
+                .isRead(entity.getIsRead())
                 .readAt(entity.getReadAt())
                 .build();
     }
@@ -29,7 +29,7 @@ public class NotificationDto {
         return NotificationDto.builder()
                 .type("comment")
                 .message(entity.getCommentUserId().getUserName() + "님이 게시글에 댓글을 남겼습니다.")
-                .isRead(entity.isRead())
+                .isRead(entity.getIsRead())
                 .readAt(entity.getReadAt())
                 .build();
     }
@@ -38,7 +38,7 @@ public class NotificationDto {
         return NotificationDto.builder()
                 .type("adopt")
                 .message("당신의 댓글이 채택되었습니다!")
-                .isRead(entity.isRead())
+                .isRead(entity.getIsRead())
                 .readAt(entity.getReadAt())
                 .build();
     }

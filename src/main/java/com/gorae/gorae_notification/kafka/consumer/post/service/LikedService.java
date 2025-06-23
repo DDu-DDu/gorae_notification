@@ -17,7 +17,10 @@ public class LikedService {
     private final LikedNotificationRepository likedNotificationRepository;
     private final SimpMessagingTemplate messagingTemplate;
 
-    public  void processLikedCommentEvent(LikedEvent event) {
+    public void processLikedEvent(LikedEvent event) {
+        UserEntity postUserId = userEntityRepository.findByUserId(event.getPostUserId())
+                .orElseThrow(()-> new IllegalArgumentException("게시글 유저 없음"));
+
         UserEntity commentUserId = userEntityRepository.findByUserId(event.getCommentUserId())
                 .orElseThrow(()-> new IllegalArgumentException("댓글 유저 없음"));
 
@@ -29,6 +32,7 @@ public class LikedService {
         String message = likedUserId.getUserId() + "님이 댓글에 좋아요를 눌렀습니다.";
 
         LikedNotificationEntity likedNotification = LikedNotificationEntity.builder()
+                .postUserId(postUserId)
                 .commentUserId(commentUserId)
                 .commentLikeUserId(likedUserId)
                 .likeStatus(likeStatus)
@@ -40,6 +44,6 @@ public class LikedService {
         likedNotificationRepository.save(likedNotification);
 
         messagingTemplate.convertAndSend(
-                "/topic/notification/like/" + commentUserId.getUserId(), message);
+                "/topic/notification/liked/" + commentUserId.getUserId(), message);
     }
 }

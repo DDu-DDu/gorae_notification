@@ -24,7 +24,7 @@ public class KafkaAdoptConsumer {
     public void handleAdoptEvent(AdoptEvent event, Acknowledgment ack) {
         try {
             log.info("userId={}님이 채택했습니다.", event.getPostUserId());
-            adoptService.processAdoptCommentEvent(event);
+            adoptService.processAdoptEvent(event);
             ack.acknowledge();
         } catch (Exception e) {
             log.error("채택중 오류가 발생헀습니다. {}", e.getMessage(), e);

@@ -10,12 +10,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class AdoptEvent {
-    public static final String Topic = "adopt-comment";
+    public static final String Topic = "adopt";
 
     private String action;
 
-    private String commentUserId;
     private String postUserId;
+    private String commentUserId;
     private String adopt;
 
     private LocalDateTime eventTime;

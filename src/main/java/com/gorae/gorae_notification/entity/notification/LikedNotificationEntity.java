@@ -7,13 +7,14 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "like")
+@Table(name = "liked")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class LikedNotificationEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,7 +35,8 @@ public class LikedNotificationEntity {
 
     private String message;
 
-    private boolean isRead = false;
+    @Builder.Default
+    private Boolean isRead = false;
 
     private LocalDateTime readAt;
 }

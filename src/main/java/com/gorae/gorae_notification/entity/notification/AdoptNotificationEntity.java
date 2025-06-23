@@ -27,15 +27,12 @@ public class AdoptNotificationEntity {
     @JoinColumn(name = "comment_userid")
     private UserEntity commentUserId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "adopt_userid")
-    private UserEntity commentLikeUserId;
-
-    private boolean adopt = false;
+    private boolean adopt;
 
     private String message;
 
-    private boolean isRead = false;
+    @Builder.Default
+    private Boolean isRead = false;
 
     private LocalDateTime readAt;
 }
