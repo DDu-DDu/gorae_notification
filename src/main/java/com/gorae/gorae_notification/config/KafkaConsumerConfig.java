@@ -88,5 +88,4 @@ public class KafkaConsumerConfig {
     public ConcurrentKafkaListenerContainerFactory<String, BadgeEvent> badgeKafkaListenerFactory() {
         return  buildFactory(BadgeEvent.class, "badge-notification");
     }
-
 }
