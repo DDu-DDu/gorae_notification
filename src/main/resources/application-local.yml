@@ -1,6 +1,9 @@
 server:
   port: 8080
 
+jwt:
+  secret: Wf9mPjLuhcD7xRxMaNfEmw69KslHX7eY5EOBPW6vEpLFn2XQ2mMqgHdzJlWYXYAn
+
 spring:
   datasource:
     # 데이터베이스 연결을 위한 URL입니다.

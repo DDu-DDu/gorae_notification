@@ -2,15 +2,13 @@ package com.gorae.gorae_notification.kafka.consumer.post.dto;
 
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class LikedEvent {
-    public static final String Topic = "liked-notification";
+public class LikedChangeEvent {
+    public static final String Topic = "liked-notification-change";
 
     private String postUserId;
     private String commentUserId;

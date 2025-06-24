@@ -10,9 +10,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class BadgeEvent {
-    public static final String Topic = "badge";
+    public static final String Topic = "badge-notification";
 
-
-
+    private String badgeUserId;
+    private String code;
+    private String name;
+    private String icon;
     private LocalDateTime eventTime;
 }

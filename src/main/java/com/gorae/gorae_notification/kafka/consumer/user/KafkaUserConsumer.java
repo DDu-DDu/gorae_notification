@@ -16,13 +16,13 @@ public class KafkaUserConsumer {
 
     @KafkaListener(
             topics = UserEvent.Topic,
-            groupId = "user",
+            groupId = "user-notification",
             containerFactory = "userKafkaListenerFactory"
     )
     public void handleUserEvent(UserEvent event) {
         try {
-            log.info("Kafka 유저 이벤트 수신: userId={}, action={}", event.getUserId(), event.getAction());
-            userService.saveOrUpdateUser(event);
+            log.info("Kafka 유저 이벤트 수신: userId={}", event.getUserId());
+            userService.processUserEvent(event);
         } catch (Exception e) {
             log.error("유저 이벤트 처리중 오류 발생: {}", e.getMessage(), e);
         }

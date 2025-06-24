@@ -2,7 +2,7 @@ package com.gorae.gorae_notification.kafka.consumer.post.service;
 
 import com.gorae.gorae_notification.entity.notification.AdoptNotificationEntity;
 import com.gorae.gorae_notification.entity.user.UserEntity;
-import com.gorae.gorae_notification.kafka.consumer.post.dto.AdoptEvent;
+import com.gorae.gorae_notification.kafka.consumer.post.dto.AdoptChangeEvent;
 import com.gorae.gorae_notification.repository.AdoptNotificationRepository;
 import com.gorae.gorae_notification.repository.UserEntityRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AdoptService {
+public class AdoptChangeService {
 
     private final UserEntityRepository userEntityRepository;
     private final AdoptNotificationRepository adoptNotificationRepository;
     private final SimpMessagingTemplate messagingTemplate;
 
-    public void processAdoptEvent(AdoptEvent event) {
+    public void processAdoptChangeEvent(AdoptChangeEvent event) {
         UserEntity postUserId = userEntityRepository.findByUserId(event.getPostUserId())
                 .orElseThrow(() -> new IllegalArgumentException("질문 작성자 유저 없음"));
 

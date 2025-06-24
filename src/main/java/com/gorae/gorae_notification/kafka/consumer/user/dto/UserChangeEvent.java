@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserEvent {
-    public static final String Topic = "user-notification";
+public class UserChangeEvent {
+    public static final String Topic = "user-notification-change";
 
     private String userId;
     private String userName;

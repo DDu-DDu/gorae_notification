@@ -9,11 +9,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class LikedEvent {
-    public static final String Topic = "liked-notification";
+public class CommentChangeEvent {
+    public static final String Topic = "comment-notification-change";
 
     private String postUserId;
     private String commentUserId;
-    private String commentLikeUserId;
-    private String likeStatus;
+    private String commentContent;
+    private LocalDateTime eventTime;
 }

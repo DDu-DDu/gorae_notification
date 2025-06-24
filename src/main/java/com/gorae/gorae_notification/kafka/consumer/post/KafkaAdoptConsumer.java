@@ -1,7 +1,6 @@
 package com.gorae.gorae_notification.kafka.consumer.post;
 
 import com.gorae.gorae_notification.kafka.consumer.post.dto.AdoptEvent;
-import com.gorae.gorae_notification.kafka.consumer.post.dto.CommentEvent;
 import com.gorae.gorae_notification.kafka.consumer.post.service.AdoptService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +16,7 @@ public class KafkaAdoptConsumer {
     private final AdoptService adoptService;
 
     @KafkaListener(
-            topics = CommentEvent.Topic,
+            topics = AdoptEvent.Topic,
             groupId = "adopt",
             containerFactory = "adoptKafkaListenerFactory"
     )

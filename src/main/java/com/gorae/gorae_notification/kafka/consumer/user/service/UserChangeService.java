@@ -1,18 +1,17 @@
 package com.gorae.gorae_notification.kafka.consumer.user.service;
 
 import com.gorae.gorae_notification.entity.user.UserEntity;
-import com.gorae.gorae_notification.kafka.consumer.user.dto.UserEvent;
+import com.gorae.gorae_notification.kafka.consumer.user.dto.UserChangeEvent;
 import com.gorae.gorae_notification.repository.UserEntityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
-
+public class UserChangeService {
     private final UserEntityRepository userEntityRepository;
 
-    public void processUserEvent(UserEvent event) {
+    public void processUserChangeEvent(UserChangeEvent event) {
         UserEntity user = userEntityRepository.findByUserId(event.getUserId())
                 .map(existing -> {
                     existing.setUserName(event.getUserName());

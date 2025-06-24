@@ -8,6 +8,7 @@ import com.gorae.gorae_notification.repository.AdoptNotificationRepository;
 import com.gorae.gorae_notification.repository.CommentNotificationRepository;
 import com.gorae.gorae_notification.repository.LikedNotificationRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,17 +29,63 @@ public class NotificationService {
         List<NotificationDto> comments = commentNotificationRepository.findByPostUserId_UserId(userId)
                 .stream()
                 .map(NotificationDto::fromCommentEntity)
-                .collect(Collectors.toList());
+                .toList();
 
         List<NotificationDto> adopts = adoptNotificationRepository.findByCommentUserId_UserId(userId)
                 .stream()
                 .map(NotificationDto::fromAdoptEntity)
-                .collect(Collectors.toList());
+                .toList();
 
         liked.addAll(comments);
         liked.addAll(adopts);
 
         return liked;
+    }
+
+    public void markAsRead(String type, Long id, String userId) {
+        switch (type) {
+            case "like" -> likedNotificationRepository.findById(id).ifPresent(n -> {
+                if (n.getCommentUserId().getUserId().equals(userId)) {
+                    n.setIsRead(true);
+                    n.setReadAt(LocalDateTime.now());
+                    likedNotificationRepository.save(n);
+                }
+            });
+            case "comment" -> commentNotificationRepository.findById(id).ifPresent(n -> {
+                if (n.getPostUserId().getUserId().equals(userId)) {
+                    n.setIsRead(true);
+                    n.setReadAt(LocalDateTime.now());
+                    commentNotificationRepository.save(n);
+                }
+            });
+            case "adopt" -> adoptNotificationRepository.findById(id).ifPresent(n -> {
+                if (n.getCommentUserId().getUserId().equals(userId)) {
+                    n.setIsRead(true);
+                    n.setReadAt(LocalDateTime.now());
+                    adoptNotificationRepository.save(n);
+                }
+            });
+            default -> throw new IllegalArgumentException("Unknown type: " + type);
+        }
+    }
+
+    public void markAllAsRead(String userId) {
+        likedNotificationRepository.findByCommentUserId_UserId(userId).forEach(n -> {
+            n.setIsRead(true);
+            n.setReadAt(LocalDateTime.now());
+        });
+        commentNotificationRepository.findByPostUserId_UserId(userId).forEach(n -> {
+            n.setIsRead(true);
+            n.setReadAt(LocalDateTime.now());
+        });
+        adoptNotificationRepository.findByCommentUserId_UserId(userId).forEach(n -> {
+            n.setIsRead(true);
+            n.setReadAt(LocalDateTime.now());
+        });
+
+        likedNotificationRepository.flush();
+        commentNotificationRepository.flush();
+        adoptNotificationRepository.flush();
     }
 }
 

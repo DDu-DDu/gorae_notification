@@ -10,13 +10,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class CommentEvent {
-    public static final String Topic = "comment";
-
-    private String action;
+    public static final String Topic = "comment-notification";
 
     private String postUserId;
     private String commentUserId;
     private String commentContent;
-
     private LocalDateTime eventTime;
 }
