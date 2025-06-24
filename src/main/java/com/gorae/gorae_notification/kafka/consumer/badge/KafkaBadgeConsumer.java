@@ -20,11 +20,10 @@ public class KafkaBadgeConsumer {
             groupId = "Badge-notification",
             containerFactory = "badgeKafkaListenerFactory"
     )
-    public void handleBadgeEvent(BadgeEvent event, Acknowledgment ack) {
+    public void handleBadgeEvent(BadgeEvent event) {
         try{
             log.info("userId={}님 icon={}가 생성되었습니다.", event.getBadgeUserId(), event.getIcon());
             badgeService.processBadgeEvent(event);
-            ack.acknowledge();
         } catch (Exception e) {
             log.error("뱃지 생성중 오류가 발생했습니다. {}",e.getMessage(), e);
         }

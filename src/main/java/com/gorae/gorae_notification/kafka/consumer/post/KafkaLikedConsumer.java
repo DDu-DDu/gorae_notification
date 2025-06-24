@@ -20,11 +20,10 @@ public class KafkaLikedConsumer {
             groupId = "liked",
             containerFactory = "likedKafkaListenerFactory"
     )
-    public void handleLikedEvent(LikedEvent event, Acknowledgment ack) {
+    public void handleLikedEvent(LikedEvent event) {
         try {
             log.info("userId={}님이 좋아요를 남겼습니다.", event.getCommentLikeUserId());
             likedService.processLikedEvent(event);
-            ack.acknowledge();
         } catch (Exception e) {
             log.error("좋아요중 오류가 발생헀습니다. {}", e.getMessage(), e);
         }

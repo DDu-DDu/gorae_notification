@@ -20,11 +20,10 @@ public class KafkaAdoptConsumer {
             groupId = "adopt",
             containerFactory = "adoptKafkaListenerFactory"
     )
-    public void handleAdoptEvent(AdoptEvent event, Acknowledgment ack) {
+    public void handleAdoptEvent(AdoptEvent event) {
         try {
             log.info("userId={}님이 채택했습니다.", event.getPostUserId());
             adoptService.processAdoptEvent(event);
-            ack.acknowledge();
         } catch (Exception e) {
             log.error("채택중 오류가 발생헀습니다. {}", e.getMessage(), e);
         }

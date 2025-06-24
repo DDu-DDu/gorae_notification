@@ -20,11 +20,10 @@ public class KafkaCommentChangeConsumer {
             groupId = "comment-change",
             containerFactory = "commentChangeKafkaListenerFactory"
     )
-    public void handleCommentChangeEvent(CommentChangeEvent event, Acknowledgment ack) {
+    public void handleCommentChangeEvent(CommentChangeEvent event) {
         try {
             log.info("userId={}님이 답글을 남겼습니다.", event.getCommentUserId());
             commentChangeService.processCommentChangeEvent(event);
-            ack.acknowledge();
         } catch (Exception e) {
             log.error("답글 작성중 오류가 발생헀습니다. {}", e.getMessage(), e);
         }

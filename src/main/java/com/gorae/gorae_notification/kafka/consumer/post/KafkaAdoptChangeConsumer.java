@@ -20,11 +20,10 @@ public class KafkaAdoptChangeConsumer {
             groupId = "adopt-change",
             containerFactory = "adoptChangeKafkaListenerFactory"
     )
-    public void handleAdoptChangeEvent(AdoptChangeEvent event, Acknowledgment ack) {
+    public void handleAdoptChangeEvent(AdoptChangeEvent event) {
         try {
             log.info("userId={}님이 채택을 취소했습니다.", event.getPostUserId());
             adoptChangeService.processAdoptChangeEvent(event);
-            ack.acknowledge();
         } catch (Exception e) {
             log.error("채택중 오류가 발생헀습니다. {}", e.getMessage(), e);
         }

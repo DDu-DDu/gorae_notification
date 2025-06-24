@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8082
 
 jwt:
   secret: Wf9mPjLuhcD7xRxMaNfEmw69KslHX7eY5EOBPW6vEpLFn2XQ2mMqgHdzJlWYXYAn
