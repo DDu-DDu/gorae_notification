@@ -1,11 +1,10 @@
 package com.gorae.gorae_notification.kafka.consumer.badge.service;
 
-import com.gorae.gorae_notification.entity.notification.BadgeNotificationEntity;
-import com.gorae.gorae_notification.entity.notification.CommentNotificationEntity;
+import com.gorae.gorae_notification.entity.notification.BadgeEntity;
 import com.gorae.gorae_notification.entity.user.UserEntity;
 import com.gorae.gorae_notification.kafka.consumer.badge.dto.BadgeEvent;
 import com.gorae.gorae_notification.repository.BadgeNotificationRepository;
-import com.gorae.gorae_notification.repository.UserEntityRepository;
+import com.gorae.gorae_notification.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
@@ -14,12 +13,12 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class BadgeService {
 
-    private final UserEntityRepository userEntityRepository;
+    private final UserRepository userRepository;
     private final BadgeNotificationRepository badgeNotificationRepository;
     private final SimpMessagingTemplate simpMessagingTemplate;
 
     public void processBadgeEvent(BadgeEvent event) {
-        UserEntity badgeUserId = userEntityRepository.findByUserId(event.getBadgeUserId())
+        UserEntity badgeUserId = userRepository.findByUserId(event.getBadgeUserId())
                 .orElseThrow(() -> new IllegalArgumentException("뱃지 유저 없음"));
 
         String code = event.getCode();
@@ -30,7 +29,7 @@ public class BadgeService {
 
         String message = badgeUserId.getUserId() + "님 뱃지가 달렸습니다.";
 
-        BadgeNotificationEntity badgeNotification = BadgeNotificationEntity.builder()
+        BadgeEntity badgeNotification = BadgeEntity.builder()
                 .badgeUserId(badgeUserId)
                 .code(code)
                 .name(name)

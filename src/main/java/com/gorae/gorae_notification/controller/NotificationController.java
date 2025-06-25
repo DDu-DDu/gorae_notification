@@ -5,7 +5,6 @@ import com.gorae.gorae_notification.service.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,8 +22,9 @@ public class NotificationController {
         return notificationService.getNotificationsByUserId(user.getUsername());
     }
 
-    @PostMapping("/{id}/{type}/read")
-    public ResponseEntity<Void> markAsRead(@PathVariable String type,
+    @PostMapping("/{userId}/{type}/{id}/read")
+    public ResponseEntity<Void> markAsRead(@PathVariable String userId,
+                                           @PathVariable String type,
                                            @PathVariable Long id,
                                            @AuthenticationPrincipal org.springframework.security.core.userdetails.User user) {
         notificationService.markAsRead(type, id, user.getUsername());
@@ -43,7 +43,7 @@ public class NotificationController {
 //        return notificationService.getNotificationsByUserId(userId);
 //    }
 //
-//    @PostMapping("/{userId}/{type}/read")
+//    @PostMapping("/{userId}/{type}/{id}/read")
 //    public ResponseEntity<Void> markAsRead(@PathVariable String userId,
 //                                           @PathVariable String type,
 //                                           @PathVariable Long id) {

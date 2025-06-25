@@ -7,27 +7,27 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "adopt")
+@Table(name = "badge")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AdoptNotificationEntity {
+public class BadgeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "post_userid")
-    private UserEntity postUserId;
+    @JoinColumn(name = "badge_userid")
+    private UserEntity badgeUserId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "comment_userid")
-    private UserEntity commentUserId;
+    private String code;
 
-    private boolean adopt;
+    private String name;
+
+    private String icon;
 
     private String message;
 

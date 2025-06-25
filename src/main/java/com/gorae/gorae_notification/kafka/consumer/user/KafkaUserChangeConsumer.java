@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class KafkaUserChangeConsumer {
 
-    private UserChangeService userChangeService;
+    private final UserChangeService userChangeService;
 
     @KafkaListener(
             topics = UserChangeEvent.Topic,

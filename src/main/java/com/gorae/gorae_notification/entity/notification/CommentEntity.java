@@ -7,13 +7,13 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "liked")
+@Table(name = "comment")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class LikedNotificationEntity {
+public class CommentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,11 +27,7 @@ public class LikedNotificationEntity {
     @JoinColumn(name = "comment_userid")
     private UserEntity commentUserId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "like_userid")
-    private UserEntity commentLikeUserId;
-
-    private boolean likeStatus;
+    private String commentContent;
 
     private String message;
 
@@ -40,3 +36,4 @@ public class LikedNotificationEntity {
 
     private LocalDateTime readAt;
 }
+

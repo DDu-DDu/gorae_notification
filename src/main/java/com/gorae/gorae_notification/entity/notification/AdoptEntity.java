@@ -7,13 +7,13 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "comment")
+@Table(name = "adopt")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CommentNotificationEntity {
+public class AdoptEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,8 +27,6 @@ public class CommentNotificationEntity {
     @JoinColumn(name = "comment_userid")
     private UserEntity commentUserId;
 
-    private String commentContent;
-
     private String message;
 
     @Builder.Default
@@ -36,4 +34,3 @@ public class CommentNotificationEntity {
 
     private LocalDateTime readAt;
 }
-

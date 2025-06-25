@@ -12,5 +12,4 @@ public class AdoptEvent {
 
     private String postUserId;
     private String commentUserId;
-    private String adopt;
 }

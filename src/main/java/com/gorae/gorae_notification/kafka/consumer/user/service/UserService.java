@@ -2,7 +2,7 @@ package com.gorae.gorae_notification.kafka.consumer.user.service;
 
 import com.gorae.gorae_notification.entity.user.UserEntity;
 import com.gorae.gorae_notification.kafka.consumer.user.dto.UserEvent;
-import com.gorae.gorae_notification.repository.UserEntityRepository;
+import com.gorae.gorae_notification.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserService {
 
-    private final UserEntityRepository userEntityRepository;
+    private final UserRepository userRepository;
 
     public void processUserEvent(UserEvent event) {
-        UserEntity user = userEntityRepository.findByUserId(event.getUserId())
+        UserEntity user = userRepository.findByUserId(event.getUserId())
                 .map(existing -> {
                     existing.setUserName(event.getUserName());
                     existing.setProfileImgUrl(event.getProfileImgUrl());
@@ -25,6 +25,6 @@ public class UserService {
                         .profileImgUrl(event.getProfileImgUrl())
                         .build()
                 );
-        userEntityRepository.save(user);
+        userRepository.save(user);
     }
 }

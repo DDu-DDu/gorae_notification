@@ -15,6 +15,4 @@ public class UserChangeEvent {
     private String userId;
     private String userName;
     private String profileImgUrl;
-
-    private LocalDateTime eventTime;
 }

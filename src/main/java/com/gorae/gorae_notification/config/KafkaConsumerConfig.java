@@ -60,28 +60,13 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, CommentChangeEvent> commentChangeKafkaListenerFactory() {
-        return buildFactory(CommentChangeEvent.class, "comment-notification-change");
-    }
-
-    @Bean
     public ConcurrentKafkaListenerContainerFactory<String, LikedEvent> likedKafkaListenerFactory() {
         return buildFactory(LikedEvent.class, "liked-notification");
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, LikedChangeEvent> likedChangeKafkaListenerFactory() {
-        return buildFactory(LikedChangeEvent.class, "liked-notification-change");
-    }
-
-    @Bean
     public ConcurrentKafkaListenerContainerFactory<String, AdoptEvent> adoptKafkaListenerFactory() {
         return buildFactory(AdoptEvent.class, "adopt-notification");
-    }
-
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, AdoptChangeEvent> adoptChangeKafkaListenerFactory() {
-        return buildFactory(AdoptChangeEvent.class, "adopt-notification-change");
     }
 
     @Bean
