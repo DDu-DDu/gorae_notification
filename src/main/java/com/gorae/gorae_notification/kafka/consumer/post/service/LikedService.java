@@ -2,7 +2,7 @@ package com.gorae.gorae_notification.kafka.consumer.post.service;
 
 import com.gorae.gorae_notification.entity.notification.LikedEntity;
 import com.gorae.gorae_notification.entity.user.UserEntity;
-import com.gorae.gorae_notification.kafka.consumer.post.dto.LikedEvent;
+import com.gorae.gorae_notification.kafka.consumer.post.dto.LikedNotificationEvent;
 import com.gorae.gorae_notification.repository.LikedNotificationRepository;
 import com.gorae.gorae_notification.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ public class LikedService {
     private final LikedNotificationRepository likedNotificationRepository;
     private final SimpMessagingTemplate messagingTemplate;
 
-    public void processLikedEvent(LikedEvent event) {
+    public void processLikedEvent(LikedNotificationEvent event) {
 
         UserEntity commentUserId = userRepository.findByUserId(event.getCommentUserId())
                 .orElseThrow(()-> new IllegalArgumentException("댓글 유저 없음"));

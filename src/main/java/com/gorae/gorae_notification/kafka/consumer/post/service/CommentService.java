@@ -2,7 +2,7 @@ package com.gorae.gorae_notification.kafka.consumer.post.service;
 
 import com.gorae.gorae_notification.entity.notification.CommentEntity;
 import com.gorae.gorae_notification.entity.user.UserEntity;
-import com.gorae.gorae_notification.kafka.consumer.post.dto.CommentEvent;
+import com.gorae.gorae_notification.kafka.consumer.post.dto.CommentNotificationEvent;
 import com.gorae.gorae_notification.repository.CommentNotificationRepository;
 import com.gorae.gorae_notification.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ public class CommentService {
     private final CommentNotificationRepository commentNotificationRepository;
     private final SimpMessagingTemplate messagingTemplate;
 
-    public void processCommentEvent(CommentEvent event) {
+    public void processCommentEvent(CommentNotificationEvent event) {
         UserEntity postUserId = userRepository.findByUserId(event.getPostUserId())
                 .orElseThrow(() -> new IllegalArgumentException("게시글 유저 없음"));
 

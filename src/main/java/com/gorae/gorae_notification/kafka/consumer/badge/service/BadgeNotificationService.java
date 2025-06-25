@@ -2,7 +2,7 @@ package com.gorae.gorae_notification.kafka.consumer.badge.service;
 
 import com.gorae.gorae_notification.entity.notification.BadgeEntity;
 import com.gorae.gorae_notification.entity.user.UserEntity;
-import com.gorae.gorae_notification.kafka.consumer.badge.dto.BadgeEvent;
+import com.gorae.gorae_notification.kafka.consumer.badge.dto.BadgeNotificationEvent;
 import com.gorae.gorae_notification.repository.BadgeNotificationRepository;
 import com.gorae.gorae_notification.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class BadgeService {
+public class BadgeNotificationService {
 
     private final UserRepository userRepository;
     private final BadgeNotificationRepository badgeNotificationRepository;
     private final SimpMessagingTemplate simpMessagingTemplate;
 
-    public void processBadgeEvent(BadgeEvent event) {
+    public void processBadgeEvent(BadgeNotificationEvent event) {
         UserEntity badgeUserId = userRepository.findByUserId(event.getBadgeUserId())
                 .orElseThrow(() -> new IllegalArgumentException("뱃지 유저 없음"));
 

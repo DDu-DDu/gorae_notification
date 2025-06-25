@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class LikedEvent {
+public class LikedNotificationEvent {
     public static final String Topic = "liked-notification";
 
     private String commentUserId;

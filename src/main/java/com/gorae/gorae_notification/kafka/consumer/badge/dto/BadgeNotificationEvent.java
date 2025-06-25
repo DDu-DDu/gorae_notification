@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BadgeEvent {
+public class BadgeNotificationEvent {
     public static final String Topic = "badge-notification";
 
     private String badgeUserId;

@@ -1,6 +1,6 @@
 package com.gorae.gorae_notification.kafka.consumer.post;
 
-import com.gorae.gorae_notification.kafka.consumer.post.dto.AdoptEvent;
+import com.gorae.gorae_notification.kafka.consumer.post.dto.AdoptNotificationEvent;
 import com.gorae.gorae_notification.kafka.consumer.post.service.AdoptService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,16 +10,16 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class KafkaAdoptConsumer {
+public class KafkaAdoptNotificationConsumer {
 
     private final AdoptService adoptService;
 
     @KafkaListener(
-            topics = AdoptEvent.Topic,
+            topics = AdoptNotificationEvent.Topic,
             groupId = "adopt",
             containerFactory = "adoptKafkaListenerFactory"
     )
-    public void handleAdoptEvent(AdoptEvent event) {
+    public void handleAdoptEvent(AdoptNotificationEvent event) {
         try {
             log.info("userId={}님이 채택했습니다.", event.getPostUserId());
             adoptService.processAdoptEvent(event);
