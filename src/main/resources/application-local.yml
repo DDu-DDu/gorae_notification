@@ -2,7 +2,7 @@ server:
   port: 8082
 
 jwt:
-  secret: Wf9mPjLuhcD7xRxMaNfEmw69KslHX7eY5EOBPW6vEpLFn2XQ2mMqgHdzJlWYXYAn
+  secret: AADfaskllew32dsfasdtossoiseeTG764Gdslkj298GsdachsisddogaeWg86G
 
 spring:
   datasource:
